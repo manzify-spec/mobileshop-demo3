@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MOBIQ — Kochi's Smartphone Destination</title>
+<meta name="description" content="MOBIQ is Kochi's trusted mobile phone showroom. Latest smartphones, accessories, repairs, EMI & exchange. Visit our store on MG Road, Ernakulam." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237C3AED'/><stop offset='0.5' stop-color='%2306B6D4'/><stop offset='1' stop-color='%23EC4899'/></linearGradient></defs><rect x='28' y='10' width='44' height='80' rx='12' fill='url(%23g)'/><rect x='34' y='20' width='32' height='52' rx='4' fill='%230A0A14'/></svg>" />
+<style>
+  :root{
+    --ink:#0A0A14; --ink-2:#11111f; --ink-3:#171728;
+    --surface:#ffffff; --surface-2:#f4f6fb;
+    --text:#0f172a; --muted:#64748b; --line:#e6e9f2;
+    --violet:#7C3AED; --blue:#3B82F6; --cyan:#06B6D4; --pink:#EC4899; --amber:#FBBF24;
+    --wa:#25D366;
+    --grad:linear-gradient(120deg,#7C3AED,#06B6D4 48%,#EC4899);
+    --grad-soft:linear-gradient(120deg,rgba(124,58,237,.14),rgba(6,182,212,.12) 50%,rgba(236,72,153,.14));
+    --radius:22px; --radius-sm:14px;
+    --shadow:0 24px 60px -28px rgba(15,23,42,.4);
+    --shadow-lg:0 40px 90px -40px rgba(15,23,42,.55);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--surface);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4,.display{font-family:'Space Grotesk',sans-serif;line-height:1.06;letter-spacing:-.02em}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .section{padding:96px 0}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk';font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet)}
+  .eyebrow::before{content:"";width:26px;height:2px;border-radius:2px;background:var(--grad)}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-weight:600;font-size:.98rem;padding:14px 24px;border-radius:999px;border:0;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease;white-space:nowrap}
+  .btn:active{transform:scale(.97)}
+  .btn-grad{background:var(--grad);color:#fff;box-shadow:0 14px 30px -12px rgba(124,58,237,.7)}
+  .btn-grad:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px rgba(124,58,237,.85)}
+  .btn-wa{background:var(--wa);color:#fff;box-shadow:0 14px 30px -12px rgba(37,211,102,.7)}
+  .btn-wa:hover{transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.16)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{transform:translateY(-2px)}
+  .ic{width:18px;height:18px;flex:none}
+
+  /* nav */
+  header.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+  header.nav.scrolled{background:rgba(10,10,20,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.08);padding:10px 0}
+  .nav-row{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:1.32rem;color:#fff;letter-spacing:-.01em}
+  .logo .mark{width:34px;height:34px;border-radius:10px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 20px -6px rgba(124,58,237,.8)}
+  .logo .mark span{width:13px;height:21px;border-radius:4px;background:#0A0A14;position:relative}
+  .logo .mark span::after{content:"";position:absolute;inset:3px 3px 6px;border-radius:2px;background:var(--cyan);opacity:.9}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:rgba(255,255,255,.82);font-size:.94rem;font-weight:500;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px;border-radius:11px;color:#fff;align-items:center;justify-content:center}
+  .burger:hover{background:rgba(255,255,255,.1)}
+
+  /* hero */
+  .hero{position:relative;background:var(--ink);color:#fff;padding:160px 0 110px;overflow:hidden}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;z-index:0}
+  .b1{width:520px;height:520px;background:radial-gradient(circle,#7C3AED,transparent 70%);top:-160px;left:-120px;animation:float1 16s ease-in-out infinite}
+  .b2{width:480px;height:480px;background:radial-gradient(circle,#06B6D4,transparent 70%);bottom:-180px;right:-80px;animation:float2 19s ease-in-out infinite}
+  .b3{width:380px;height:380px;background:radial-gradient(circle,#EC4899,transparent 70%);top:40%;left:42%;animation:float1 22s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+  @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-30px)}}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:700;margin:18px 0 18px}
+  .hero p.lead{font-size:1.16rem;color:rgba(255,255,255,.78);max-width:520px;margin-bottom:30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+  .stats{display:flex;gap:30px;flex-wrap:wrap}
+  .stat .num{font-family:'Space Grotesk';font-weight:700;font-size:1.9rem;line-height:1}
+  .stat .lbl{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:5px}
+
+  /* phone mockup */
+  .phone-stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:480px}
+  .phone{position:relative;width:248px;height:506px;border-radius:42px;background:linear-gradient(160deg,#1c1c30,#0c0c16);padding:11px;box-shadow:0 50px 90px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.06);animation:bob 6s ease-in-out infinite;z-index:2}
+  @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(-3deg)}}
+  .phone-screen{width:100%;height:100%;border-radius:32px;background:var(--grad);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:26px 20px}
+  .phone-screen::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.4),transparent 50%);mix-blend-mode:overlay}
+  .notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:74px;height:18px;background:#0c0c16;border-radius:12px;z-index:3}
+  .ps-top{color:#fff;font-family:'Space Grotesk';position:relative;z-index:2}
+  .ps-top .t{font-size:.72rem;opacity:.85;letter-spacing:.1em;text-transform:uppercase}
+  .ps-top .big{font-size:1.6rem;font-weight:700;margin-top:4px}
+  .ps-apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;z-index:2}
+  .ps-apps i{display:block;aspect-ratio:1;border-radius:14px;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+  .chip{position:absolute;background:rgba(255,255,255,.95);color:var(--text);border-radius:16px;padding:11px 15px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:.84rem;box-shadow:var(--shadow-lg);z-index:3}
+  .chip .dot{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;flex:none}
+  .chip.c1{top:54px;left:-30px;animation:bob 5s ease-in-out infinite}
+  .chip.c2{bottom:90px;right:-44px;animation:bob 7s ease-in-out infinite .6s}
+  .chip.c3{bottom:8px;left:-10px;animation:bob 6.5s ease-in-out infinite .3s}
+
+  /* marquee */
+  .brands{background:var(--ink-2);color:#fff;padding:34px 0;overflow:hidden}
+  .brands .label{text-align:center;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:22px;font-family:'Space Grotesk';font-weight:600}
+  .marquee{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .marquee-track{display:flex;gap:56px;padding-right:56px;animation:scroll 26s linear infinite;white-space:nowrap}
+  .brands:hover .marquee-track{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .marquee-track span{font-family:'Space Grotesk';font-weight:600;font-size:1.5rem;color:rgba(255,255,255,.62);transition:color .2s}
+  .marquee-track span:hover{color:#fff}
+
+  /* generic heads */
+  .head{max-width:680px;margin-bottom:54px}
+  .head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .head h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:700;margin:14px 0}
+  .head p{color:var(--muted);font-size:1.08rem}
+
+  /* about */
+  .about{background:var(--surface)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-media{position:relative}
+  .about-media img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow-lg);aspect-ratio:4/5;object-fit:cover}
+  .about-badge{position:absolute;bottom:-22px;right:-18px;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:14px}
+  .about-badge .r{font-family:'Space Grotesk';font-weight:700;font-size:1.7rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .about-badge .s{font-size:.78rem;color:var(--muted);line-height:1.3}
+  .about-list{list-style:none;margin-top:26px;display:grid;gap:14px}
+  .about-list li{display:flex;gap:13px;align-items:flex-start;font-size:1rem}
+  .about-list .tick{width:26px;height:26px;border-radius:8px;background:var(--grad-soft);display:grid;place-items:center;flex:none;color:var(--violet)}
+
+  /* services */
+  .services{background:var(--surface-2)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:transform .3s,box-shadow .3s,border-color .3s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+  .card:hover::before{transform:scaleX(1)}
+  .card .ico{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;color:#fff;margin-bottom:18px}
+  .card h3{font-size:1.22rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.96rem}
+  .g-violet{background:linear-gradient(135deg,#7C3AED,#a855f7)}
+  .g-cyan{background:linear-gradient(135deg,#0891b2,#06B6D4)}
+  .g-pink{background:linear-gradient(135deg,#db2777,#EC4899)}
+  .g-blue{background:linear-gradient(135deg,#2563eb,#3B82F6)}
+  .g-amber{background:linear-gradient(135deg,#f59e0b,#FBBF24)}
+  .g-emerald{background:linear-gradient(135deg,#059669,#10b981)}
+
+  /* gallery */
+  .gallery{background:var(--surface)}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+  .gal{position:relative;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;background:var(--surface-2)}
+  .gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .gal:hover img{transform:scale(1.07)}
+  .gal::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,20,.55),transparent 55%);opacity:0;transition:opacity .3s}
+  .gal:hover::after{opacity:1}
+  .gal .cap{position:absolute;left:16px;bottom:14px;color:#fff;font-family:'Space Grotesk';font-weight:600;font-size:.95rem;z-index:2;opacity:0;transform:translateY(8px);transition:.3s}
+  .gal:hover .cap{opacity:1;transform:translateY(0)}
+  .gal.big{grid-column:span 2;grid-row:span 2}
+  .gal.wide{grid-column:span 2}
+  .gal .ph{width:100%;height:100%;background:var(--grad-soft);display:grid;place-items:center;color:var(--violet);font-family:'Space Grotesk';font-weight:600;font-size:.85rem}
+
+  /* features band */
+  .why{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .why .blob{opacity:.4}
+  .why-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px}
+  .feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px;transition:transform .3s,background .3s}
+  .feat:hover{transform:translateY(-6px);background:rgba(255,255,255,.09)}
+  .feat .ico{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:16px;background:var(--grad)}
+  .feat h3{font-size:1.1rem;margin-bottom:7px}
+  .feat p{color:rgba(255,255,255,.66);font-size:.92rem}
+
+  /* reviews */
+  .reviews{background:var(--surface-2)}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;gap:16px}
+  .stars{color:var(--amber);font-size:1.05rem;letter-spacing:2px}
+  .rev p{font-size:1rem;color:#334155}
+  .rev .who{display:flex;align-items:center;gap:13px;margin-top:auto}
+  .rev .av{width:44px;height:44px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;flex:none}
+  .rev .who b{display:block;font-family:'Space Grotesk';font-size:.98rem}
+  .rev .who small{color:var(--muted)}
+
+  /* location */
+  .location{background:var(--surface)}
+  .loc-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:stretch}
+  .loc-info{display:flex;flex-direction:column;gap:18px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding:20px;border:1px solid var(--line);border-radius:var(--radius-sm);transition:border-color .3s,box-shadow .3s,transform .3s}
+  .info-row:hover{border-color:transparent;box-shadow:var(--shadow);transform:translateY(-3px)}
+  .info-row .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none}
+  .info-row h4{font-size:1.05rem;margin-bottom:3px}
+  .info-row p,.info-row a{color:var(--muted);font-size:.96rem}
+  .info-row a:hover{color:var(--violet)}
+  .map-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);min-height:430px;border:1px solid var(--line)}
+  .map-card iframe{width:100%;height:100%;min-height:430px;border:0;display:block}
+  .hours{margin-top:6px}
+  .hours div{display:flex;justify-content:space-between;font-size:.92rem;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .hours div:last-child{border:0}
+  .hours .open{color:#10b981;font-weight:600}
+
+  /* social cta */
+  .connect{background:var(--ink-2);color:#fff}
+  .connect-inner{background:var(--grad);border-radius:32px;padding:54px;text-align:center;position:relative;overflow:hidden}
+  .connect-inner::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.25),transparent 50%)}
+  .connect-inner > *{position:relative;z-index:2}
+  .connect-inner h2{font-size:clamp(1.9rem,4vw,2.8rem);color:#fff;margin-bottom:12px}
+  .connect-inner p{color:rgba(255,255,255,.9);max-width:520px;margin:0 auto 28px;font-size:1.08rem}
+  .socials{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .soc{width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,.16);display:grid;place-items:center;color:#fff;transition:transform .25s,background .25s}
+  .soc:hover{transform:translateY(-4px) scale(1.05);background:rgba(255,255,255,.3)}
+
+  /* footer */
+  footer{background:var(--ink);color:#fff;padding:64px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+  .foot-grid h5{font-family:'Space Grotesk';font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
+  .foot-grid p{color:rgba(255,255,255,.62);font-size:.94rem;margin-top:14px;max-width:280px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px}
+  .foot-grid ul a{color:rgba(255,255,255,.72);font-size:.94rem;transition:color .2s}
+  .foot-grid ul a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:.88rem;color:rgba(255,255,255,.55)}
+  .credit{display:inline-flex;align-items:center;gap:8px}
+  .credit a{color:#fff;font-weight:600}
+  .credit .spark{width:18px;height:18px;border-radius:5px;background:var(--grad);display:inline-block}
+
+  /* float wa */
+  .wa-float{position:fixed;right:22px;bottom:24px;z-index:80;display:flex;align-items:center;gap:0;background:var(--wa);color:#fff;border-radius:999px;padding:14px;box-shadow:0 18px 40px -12px rgba(37,211,102,.7);transition:gap .3s,padding .3s,transform .25s;overflow:hidden;max-width:60px;white-space:nowrap}
+  .wa-float:hover{max-width:260px;gap:10px;padding:14px 22px 14px 14px;transform:translateY(-2px)}
+  .wa-float span{font-family:'Space Grotesk';font-weight:600;font-size:.95rem;opacity:0;transition:opacity .3s}
+  .wa-float:hover span{opacity:1}
+  .wa-float svg{flex:none}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:120;background:rgba(8,8,16,.92);display:none;align-items:center;justify-content:center;padding:28px;backdrop-filter:blur(6px)}
+  .lb.show{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;border-radius:14px;box-shadow:var(--shadow-lg)}
+  .lb-close{position:absolute;top:22px;right:26px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);border:0;color:#fff;font-size:1.5rem;cursor:pointer;display:grid;place-items:center}
+  .lb-close:hover{background:rgba(255,255,255,.28)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* mobile */
+  @media(max-width:960px){
+    .section{padding:72px 0}
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero-ctas,.stats{justify-content:center}
+    .hero p.lead{margin-left:auto;margin-right:auto}
+    .phone-stage{order:-1;min-height:430px}
+    .about-grid,.loc-grid{grid-template-columns:1fr;gap:40px}
+    .about-media{max-width:380px;margin:0 auto}
+    .cards,.rev-grid{grid-template-columns:repeat(2,1fr)}
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:680px){
+    .nav-links{display:none}
+    .nav-cta .btn:not(.burger){display:none}
+    .burger{display:flex}
+    .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,10,20,.97);backdrop-filter:blur(14px);padding:22px 24px;gap:18px;border-top:1px solid rgba(255,255,255,.1)}
+    .nav-links.open a{font-size:1.05rem}
+    .cards,.rev-grid,.why-grid,.foot-grid{grid-template-columns:1fr}
+    .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+    .gal.big{grid-column:span 2;grid-row:span 1}
+    .stat .num{font-size:1.6rem}
+    .connect-inner{padding:36px 22px}
+    .about-badge{right:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="logo"><span class="mark"><span></span></span>MOBIQ</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Showroom</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#location">Visit Us</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="https://wa.me/919847012345?text=Hi%20MOBIQ%2C%20I%27d%20like%20to%20know%20more%20about%20your%20phones" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+        WhatsApp
+      </a>
+      <button class="burger" id="burger" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" style="color:#c4b5fd">MG Road · Ernakulam · Kochi</span>
+      <h1>Kochi's smartphone<br><span class="grad-text">destination.</span></h1>
+      <p class="lead">From the latest flagships to everyday essentials — explore, compare and pick your next phone in person, with honest advice and genuine products you can trust.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/919847012345?text=Hi%20MOBIQ%2C%20I%27d%20like%20to%20enquire%20about%20a%20phone" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+          Chat on WhatsApp
+        </a>
+        <a href="#location" class="btn btn-ghost">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num" data-count="12" data-suffix="+">0</div><div class="lbl">Years in Kochi</div></div>
+        <div class="stat"><div class="num" data-count="15" data-suffix="+">0</div><div class="lbl">Brands stocked</div></div>
+        <div class="stat"><div class="num" data-count="50" data-suffix="K+">0</div><div class="lbl">Happy customers</div></div>
+        <div class="stat"><div class="num">4.8<span style="color:var(--amber)">★</span></div><div class="lbl">Google rating</div></div>
+      </div>
+    </div>
+    <div class="phone-stage">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="phone-screen">
+          <div class="ps-top">
+            <div class="t">Welcome to</div>
+            <div class="big">MOBIQ</div>
+          </div>
+          <div class="ps-apps">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+      <div class="chip c1"><span class="dot g-amber">★</span>Best price promise</div>
+      <div class="chip c2"><span class="dot g-emerald">✓</span>100% genuine</div>
+      <div class="chip c3"><span class="dot g-cyan">⟳</span>Easy exchange</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="wrap"><div class="label">Authorised &amp; trusted brands under one roof</div></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Apple</span><span>Samsung</span><span>OnePlus</span><span>Google</span><span>Xiaomi</span><span>Vivo</span><span>OPPO</span><span>realme</span><span>Nothing</span><span>Motorola</span>
+      <span>Apple</span><span>Samsung</span><span>OnePlus</span><span>Google</span><span>Xiaomi</span><span>Vivo</span><span>OPPO</span><span>realme</span><span>Nothing</span><span>Motorola</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <img data-src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=900&q=80" alt="Smartphone on display at MOBIQ" />
+      <div class="about-badge">
+        <div class="r">4.8★</div>
+        <div class="s">Rated by<br>2,300+ customers</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">About MOBIQ</span>
+      <h2 style="font-size:clamp(2rem,4.4vw,2.9rem);font-weight:700;margin:14px 0 16px">A mobile store built on trust, not pressure.</h2>
+      <p style="color:var(--muted);font-size:1.08rem">For over a decade, MOBIQ has been the corner of Kochi where families come to buy their first phone, upgrade to the newest flagship, or simply get an honest opinion. Walk in, hold the device, ask anything — no rush, no gimmicks.</p>
+      <ul class="about-list">
+        <li><span class="tick">✓</span><span><b>Every phone is 100% genuine</b> — sealed boxes, official warranty, full bill.</span></li>
+        <li><span class="tick">✓</span><span><b>Try before you buy</b> — live demo units of every model on the floor.</span></li>
+        <li><span class="tick">✓</span><span><b>Friendly experts</b> who explain in Malayalam, English or Hindi.</span></li>
+        <li><span class="tick">✓</span><span><b>After-sales support</b> that doesn't end at the billing counter.</span></li>
+      </ul>
+      <a href="#location" class="btn btn-dark" style="margin-top:28px">Plan your visit →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow" style="margin:0 auto">What we offer</span>
+      <h2>Everything for your phone, in one place</h2>
+      <p>From buying and protecting to repairing and trading in — the whole journey is handled at our counter.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ico g-violet"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div><h3>Latest smartphones</h3><p>Flagship launches to budget-friendly picks — all the newest models, in stock and ready to demo.</p></div>
+      <div class="card reveal"><div class="ico g-cyan"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div><h3>Accessories &amp; audio</h3><p>Cases, chargers, power banks, earbuds and smartwatches — pair the right gear with your phone.</p></div>
+      <div class="card reveal"><div class="ico g-pink"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Repairs &amp; service</h3><p>Cracked screens, weak batteries, software trouble — quick, transparent repairs with quality parts.</p></div>
+      <div class="card reveal"><div class="ico g-blue"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><h3>Easy EMI &amp; finance</h3><p>No-cost EMI and instant card or finance approvals so you can own the phone you really want.</p></div>
+      <div class="card reveal"><div class="ico g-emerald"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div><h3>Old phone exchange</h3><p>Get a fair, on-the-spot valuation for your current phone and knock it straight off your bill.</p></div>
+      <div class="card reveal"><div class="ico g-amber"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Protection &amp; setup</h3><p>Tempered glass, skins and free data transfer — walk out with your new phone fully set up.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow" style="margin:0 auto">Inside the store</span>
+      <h2>Step into our showroom</h2>
+      <p>Bright, spacious and stocked floor-to-ceiling. Here's a look at what's waiting for you on MG Road.</p>
+    </div>
+    <div class="gal-grid reveal">
+      <div class="gal big"><img data-src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80" alt="MOBIQ storefront exterior"><span class="cap">Our storefront · MG Road</span></div>
+      <div class="gal"><img data-src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80" alt="Latest smartphone on display"><span class="cap">Flagship counter</span></div>
+      <div class="gal"><img data-src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Audio accessories"><span class="cap">Audio &amp; earbuds</span></div>
+      <div class="gal wide"><img data-src="https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?auto=format&fit=crop&w=900&q=80" alt="Display shelves inside the shop"><span class="cap">Accessory wall</span></div>
+      <div class="gal"><img data-src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" alt="Smartwatches on display"><span class="cap">Smartwatch zone</span></div>
+      <div class="gal"><img data-src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="Chargers and cables"><span class="cap">Charging &amp; cables</span></div>
+      <div class="gal wide"><img data-src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=900&q=80" alt="Customer trying a phone at the counter"><span class="cap">Try before you buy</span></div>
+      <div class="gal"><img data-src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Hands-on demo phone"><span class="cap">Hands-on demo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why">
+  <div class="blob b1" style="left:auto;right:-160px;top:-120px"></div>
+  <div class="blob b2" style="left:-120px;bottom:auto;top:30%"></div>
+  <div class="wrap">
+    <div class="head center reveal" style="color:#fff">
+      <span class="eyebrow" style="margin:0 auto;color:#c4b5fd">Why MOBIQ</span>
+      <h2 style="color:#fff">Reasons Kochi keeps coming back</h2>
+    </div>
+    <div class="why-grid">
+      <div class="feat reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Genuine &amp; warranty-backed</h3><p>Sealed boxes with official manufacturer warranty on every single device.</p></div>
+      <div class="feat reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Expert, no-pressure advice</h3><p>Honest recommendations based on your needs and budget — never a hard sell.</p></div>
+      <div class="feat reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Best price promise</h3><p>Competitive pricing with bank offers, cashback and exchange bonuses combined.</p></div>
+      <div class="feat reveal"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Support after the sale</h3><p>Setup help, troubleshooting and service — we're here long after you walk out.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow" style="margin:0 auto">Loved locally</span>
+      <h2>What Kochi says about us</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Bought my new phone here last week. The staff patiently let me try three models before deciding. Got a great exchange value for my old one too."</p><div class="who"><span class="av">AR</span><div><b>Arjun Raveendran</b><small>Kadavanthra</small></div></div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Cracked screen fixed in under an hour and it looks brand new. Fair price and they explained exactly what was being replaced. Highly recommend."</p><div class="who"><span class="av">FN</span><div><b>Fathima Nazar</b><small>Edappally</small></div></div></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>"Honest shop. They actually talked me out of an expensive model I didn't need and suggested something cheaper that suited me better. Trust earned."</p><div class="who"><span class="av">SM</span><div><b>Sandeep Menon</b><small>Vyttila</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section location" id="location">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Visit the store</span>
+      <h2>Come say hello</h2>
+      <p>We're right on MG Road, easy to reach by metro, bus or car — with parking nearby.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info reveal">
+        <div class="info-row"><div class="ico g-violet"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Address</h4><p>MOBIQ Mobiles, 2nd Floor, City Centre,<br>MG Road, Ernakulam, Kochi, Kerala 682011</p></div></div>
+        <div class="info-row"><div class="ico g-emerald"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>Call us</h4><a href="tel:+919847012345">+91 98470 12345</a><br><a href="tel:+914842345678">+91 484 234 5678</a></div></div>
+        <div class="info-row"><div class="ico g-cyan"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 5L2 7"/></svg></div><div><h4>Email</h4><a href="mailto:hello@mobiqkochi.in">hello@mobiqkochi.in</a></div></div>
+        <div class="info-row"><div class="ico g-amber"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div style="width:100%"><h4>Opening hours <span class="open" style="font-size:.8rem">● Open now</span></h4><div class="hours"><div><span>Monday – Saturday</span><span>10:00 AM – 9:00 PM</span></div><div><span>Sunday</span><span>11:00 AM – 7:00 PM</span></div></div></div></div>
+      </div>
+      <div class="map-card reveal">
+        <iframe title="MOBIQ location on map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=MG+Road,+Ernakulam,+Kochi,+Kerala&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT / SOCIAL -->
+<section class="section connect">
+  <div class="wrap">
+    <div class="connect-inner reveal">
+      <h2>Got a question? Just message us.</h2>
+      <p>Ask about availability, pricing, exchange value or repairs — we usually reply within minutes during store hours.</p>
+      <a href="https://wa.me/919847012345?text=Hi%20MOBIQ%2C%20I%20have%20a%20question" target="_blank" rel="noopener" class="btn" style="background:#fff;color:var(--text)">
+        <svg class="ic" viewBox="0 0 24 24" fill="#25D366"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg>
+        Message us on WhatsApp
+      </a>
+      <div class="socials">
+        <a href="#" class="soc" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg></a>
+        <a href="#" class="soc" aria-label="Facebook"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" class="soc" aria-label="YouTube"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M23 12s0-3.5-.45-5.18a2.78 2.78 0 00-1.95-1.96C18.88 4.4 12 4.4 12 4.4s-6.88 0-8.6.46a2.78 2.78 0 00-1.95 1.96C1 8.5 1 12 1 12s0 3.5.45 5.18a2.78 2.78 0 001.95 1.96c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.95-1.96C23 15.5 23 12 23 12zM9.75 15.5v-7l6 3.5z"/></svg></a>
+        <a href="https://wa.me/919847012345" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043z"/></svg></a>
+        <a href="#" class="soc" aria-label="X"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8-9.2L1 2h6.9l4.8 6.3zm-1.2 18h1.9L7.4 4H5.4z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="logo"><span class="mark"><span></span></span>MOBIQ</a>
+        <p>Kochi's trusted mobile showroom on MG Road. Latest phones, genuine products, honest advice and service that lasts.</p>
+      </div>
+      <div><h5>Explore</h5><ul><li><a href="#about">About us</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Showroom</a></li><li><a href="#reviews">Reviews</a></li></ul></div>
+      <div><h5>Services</h5><ul><li><a href="#services">New phones</a></li><li><a href="#services">Repairs</a></li><li><a href="#services">EMI &amp; finance</a></li><li><a href="#services">Exchange</a></li></ul></div>
+      <div><h5>Visit</h5><ul><li><a href="#location">MG Road, Kochi</a></li><li><a href="tel:+919847012345">+91 98470 12345</a></li><li><a href="mailto:hello@mobiqkochi.in">hello@mobiqkochi.in</a></li><li><a href="https://wa.me/919847012345" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 MOBIQ Mobiles, Kochi. All rights reserved.</div>
+      <div class="credit"><span class="spark"></span> Designed &amp; built by <a href="https://empoweraitech.in" target="_blank" rel="noopener">Empower AI Tech</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/919847012345?text=Hi%20MOBIQ%2C%20I%27d%20like%20to%20enquire" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.043zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  <span>Chat with us</span>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-close" id="lbClose" aria-label="Close">✕</button><img id="lbImg" src="" alt="" /></div>
+
+<script>
+(function(){
+  // nav scroll state
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>30)});
+
+  // mobile menu
+  var burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open')})});
+
+  // lazy images with graceful fallback
+  document.querySelectorAll('img[data-src]').forEach(function(img){
+    img.addEventListener('error',function(){
+      var ph=document.createElement('div');ph.className='ph';ph.textContent=img.alt||'MOBIQ';
+      if(img.parentNode)img.parentNode.replaceChild(ph,img);
+    });
+    img.src=img.getAttribute('data-src');
+  });
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  // counters
+  function runCount(el){
+    var target=parseFloat(el.getAttribute('data-count')),suffix=el.getAttribute('data-suffix')||'',start=null,dur=1400;
+    function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/dur,1);el.textContent=Math.floor(p*target)+(p===1?suffix:'');if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runCount(e.target);cio.unobserve(e.target)}})},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el)});
+
+  // lightbox
+  var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbClose=document.getElementById('lbClose');
+  document.querySelectorAll('.gal').forEach(function(g){
+    g.addEventListener('click',function(){var im=g.querySelector('img');if(!im)return;lbImg.src=im.src;lbImg.alt=im.alt;lb.classList.add('show')});
+  });
+  function close(){lb.classList.remove('show')}
+  lbClose.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
+</body>
+</html>
